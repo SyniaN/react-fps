@@ -1,29 +1,38 @@
+import {hot} from 'react-hot-loader/root';
 import React from 'react';
-import logo from './logo.svg';
 import styled from 'styled-components';
 import Block from './lib/Block';
+import Floor from './lib/Floor';
+import s from './constant/boxSize';
 
 function App() {
     return (
-        <WrapperWrapper>
-            <Wrapper>
-                <Block />
-            </Wrapper>
-        </WrapperWrapper>
+        <Background>
+        <ViewPort>
+            <Floor/>
+            <Block rotation={0} translation={{x: 0, z:0}} offset={{x: 0, z:0}}/>
+            <Block rotation={0} translation={{x: 3, z:0}} offset={{x: 0, z:0}}/>
+        </ViewPort>
+        </Background>
     );
 }
 
-export default App;
+export default hot(App);
 
-const Wrapper = styled.div`
-    width: 100%px;
+const ViewPort = styled.div`
+    height: 480px;
+    width: ${s(4)}px;
     margin: auto;
-    perspective: 600px;
-    background-color: transparent;
+    box-sizing:border-box;
+    background-color: lightGrey;
+    perspective: 500px;
+    overflow: hidden;
 `;
 
-const WrapperWrapper = styled.div`
-    height: 1000px;
-    background-color: grey;
-    padding-top: 500px;
-`;
+const Background = styled.div`
+    width:100vw;
+    height: 100vh;
+    padding-top: 200px;
+    background-color: black;
+    box-sizing:border-box;
+`

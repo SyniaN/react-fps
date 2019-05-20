@@ -1,11 +1,12 @@
 import styled from 'styled-components';
+import s from '../../constant/boxSize';
 
 const Wall = styled.div`
     position: absolute;
-    height: 200px;
-    width: 500px;
-    background-color: white;
-    border: 1px solid black;
+    height: ${s(1)}px;
+    width: ${s(1)}px;
+    background-color: rgba(255,255,255,0.9);
+    border: 0.5px solid lightgrey;
     box-sizing: border-box;
 `;
 
