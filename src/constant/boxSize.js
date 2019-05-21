@@ -1,7 +1,6 @@
-const UNIT = 250;
+const UNIT = 300;
 
 function getSize(i){
-    console.log(i)
     return i*UNIT;
 }
 

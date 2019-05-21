@@ -4,9 +4,9 @@ import s from '../../constant/boxSize';
 const Floor = styled.div`
     position: absolute;
     background-color: brown;
-    width: ${s(1)}px;
-    height: ${s(1)}px;
-
+    width: 100%;
+    height: 50%;
+    top: 50%;
 `
 
 export default Floor

@@ -7,6 +7,7 @@ import s from '../../constant/boxSize.js';
 function Block({rotation, offset, translation}) {
     return (
         <Wrapper rotation={rotation} offset={offset} translation={translation}>
+            <Dot offset={offset}/>
             <Wall1 />
             <Wall2 />
             <Wall3 />
@@ -17,15 +18,27 @@ function Block({rotation, offset, translation}) {
 
 export default Block;
 
+const Dot= styled.div`
+    position:absolute;
+    height:5px;
+    width:5px;
+    background-color: black;
+    ${({offset}) => css`
+        transform: translate3d(${offset.x}px, ${offset.y}px, ${offset.z}px )
+    `}}
+
+`
+
 const Wrapper = styled.div`
     position: relative;
     box-sizing:border-box;
     transform-style: preserve-3d;
     transition: transform 5s;
     ${({translation, offset, rotation}) => css`
-        transform: rotateY(${rotation}deg) translate3d(${s(translation.x)}px, 150px, ${s(translation.z)}px);
-        transform-origin: ${s(offset.x)}px, 0, ${s(offset.z)}px;
+        transform: translate3d(${s(translation.x)}px, 150px, ${s(translation.z)}px) rotateY(${rotation}deg) ;
+        transform-origin: ${offset.x}px ${offset.y}px ${offset.z}px;
     `}
+    z-index: ${({translation}) => translation.z}
 `;
 
 const Wall1 = styled(Wall)`
